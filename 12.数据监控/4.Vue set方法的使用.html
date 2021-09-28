@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>4.Vue set方法的使用</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="addSex">添加属性</button>
+			<ul>
+				<li v-for="(friend,index) of student.friends" :key="index">
+					{{friend}}
+				</li>
+			</ul>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false 
+
+		const vm = new Vue({
+			el:'#app',
+			data:{
+				name:'Peking',
+				address:'北京',
+				student:{
+					name:'tom',
+					parents:{
+						father:40,
+						mom:39,
+					},
+					friends:[
+						'Jerry','Able','Apple'
+					]
+				}
+			},
+			methods:{
+				addSex(){
+					// this.student.sex='男'
+					Vue.set(this.student,'sex','男')
+					// Vue.set(this,'sex','男')
+				}
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>收集表单数据</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<form @submit.prevent="demo">
+				账号：<input v-model="user.account" /><br />
+				密码：<input v-model="user.password" type="password" /><br />
+				年龄：<input v-model="user.age" /><br />
+				性别:<input type="radio" name="sex" value="1" v-model="user.sex" />男
+				<input type="radio" name="sex" value="2" v-model="user.sex" />女<br />
+				爱好：<input type="checkbox" v-model="user.hobbies" value="basketball" />篮球
+					 <input type="checkbox" v-model="user.hobbies" value="game"/>游戏
+					 <input type="checkbox" v-model="user.hobbies" value="swim"/>游泳<br />
+				籍贯：<select v-model="user.city" >
+						<option value="Bj">北京</option>
+						<option value="Sh">上海</option>
+						<option value="Sz">深圳</option>
+					</select><br />
+				其他信息：<textarea v-model.lazy="user.other"></textarea> <br/><br/>
+				<input type="checkbox" v-model="user.agree">阅读并接受<a href="http://www.baidu.com">《用户协议》</a>
+				<button>提交</button>
+			</form>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip = false
+
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					user:{
+						account: '',
+						password: '',
+						age: '',
+						sex: '',
+						hobbies: [],
+						city:'',
+						other:'',
+						agree:''
+					}
+				},
+				methods:{
+					demo(){
+						console.log(JSON.stringify(this.user))
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

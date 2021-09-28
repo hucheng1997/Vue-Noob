@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>何为数据代理</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let obj = {x:100}
+			let obj2 = {y:200}
+			Object.defineProperty(obj, 'y',{
+				get(){
+					return obj2.y
+				},
+				set(value){
+					obj2.y = value
+				}
+			})
+			console.log(obj)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>回顾Object.defineproperty方法</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let number = 18
+			let person = {
+				name: "张三",
+				sex: "男"
+			}
+			Object.defineProperty(person, 'age', {
+				get() {
+					console.log("---读取数据----")
+					return number
+				},
+				set(value) {
+					console.log("---设置数据----"+value)
+					number = value
+				}
+			})
+			Object.defineProperty(person, 'height', {
+				value:190,
+				writable: false
+			})
+			console.log(person)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>条件渲染</title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>当前n的值：{{n}}</h2>
+			<button @click="n++">点击n++</button>
+			<h3>1、v-show的使用</h3>
+			<h4 v-show="false" :style=styleArr>v-show=false</h4>
+			<h4 v-show="n === 2" :style=styleArr>n == 2</h4>
+			<h3>2、v-if的使用</h3>
+			<h4 v-if="false" :style=styleArr>v-show=false</h4>
+			<h4 v-if="n === 1" :style=styleArr>n == 1</h4>
+			<h3>3、 v-else和v-else-if的使用</h3>
+			<h4 v-if="n === 1" :style=styleArr>n == 1</h4>
+			<h4 v-else-if="n === 2" :style=styleArr>n == 2</h4>
+			<h4 v-else :style=styleArr>v-else</h4>
+			<h3>4、 v-if与template的配合使用</h3>
+			<template v-if="n === 4">
+				<h4>template模板</h4>
+			</template>
+		</div>
+		<script type="text/javascript">
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					n: 0,
+					styleArr: {
+						color: 'blue'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>2.Vue监测数据改变的原理</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="add">添加属性</button>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false 
+
+		const vm = new Vue({
+			el:'#app',
+			data:{
+				name:'Peking',
+				address:'北京',
+				student:{
+					name:'tom',
+					parents:{
+						father:40,
+						mom:39,
+					},
+					friends:[
+						{name:'jerry',age:25}
+					]
+				}
+			},
+			methods:{
+				add(){
+					this.age=12
+				}
+			}
+		})
+	</script>
+</html>

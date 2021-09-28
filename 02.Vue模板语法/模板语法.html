@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>模板语法</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!--体验插值语法和指令语法的用处-->
+		<div id="root">
+			<h1>1、插值语法</h1>
+			<h3>hello,{{msg}}</h3>
+			<hr />
+			<h1>2、指令语法</h1>
+			<a v-bind:href="baidu.url">跳转百度</a>
+			<!-- 简写 -->
+			<a :href="baidu.url">跳转百度</a>
+
+		</div>
+		<script type="text/javascript">
+			const vm = new Vue({
+				el: "#root",
+				data: {
+					"msg": "vue",
+					"baidu": {
+						"name": "baidu",
+						"url": "http://www.baidu.com"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

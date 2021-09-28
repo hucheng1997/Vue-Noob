@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件的基本使用</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			<button v-on:click="show($event)">点我提示信息1（不传参）</button>
+			<button @click="show2(66)">点我提示信息2（传参）</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+		
+		const vm = new Vue({
+			el: '#root',
+			methods: {
+				show() {
+					console.log(event.target.innerText)
+					console.log(this) //此处的this是vm
+					alert('同学你好！')
+				},
+				// show2(event,number){
+				// 	console.log(event,number)
+				// 	// console.log(event.target.innerText)
+				// 	// console.log(this) //此处的this是vm
+				// 	alert('同学你好！！')
+				// }
+				show2:(number)=>{
+					console.log(this)
+					alert('同学再见！')
+				}
+			}
+		})
+	</script>
+</html>

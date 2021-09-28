@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>1、基本列表渲染</title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h4>1、遍历数组</h4>
+			<ul>
+				<li v-for="(val, index) of arr" :key="index">
+					{{index}}-{{val}}
+				</li>
+			</ul>
+			<h4>2、遍历对象</h4>
+			<ul>
+				<li v-for="(val, key) of obj" :key="key">
+					{{key}}-{{val}}
+				</li>
+			</ul>
+			<h4>3、测试遍历字符串（用得少）</h4>
+			<ul>
+				<li v-for="(char, index) of str" :key="index">
+					{{index}}-{{char}}
+				</li>
+			</ul>
+			<h4>4、测试遍历指定次数（用得少）</h4>
+			<ul>
+				<li v-for="(num, index) of 5" :key="index">
+					{{index}}-{{num}}
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					str:'hello',
+					arr: ['a', 'b', 'c'],
+					obj: {
+						name: 'Robert',
+						age: 18
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

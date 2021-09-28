@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3、深度监视</title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			<h3>a的值是:{{numbers.a}}</h3>
+			<button @click="numbers.a++">点我让a+1</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+		const vm = new Vue({
+			el: '#root',
+			data: {
+				numbers: {
+					a: 1
+				}
+			},
+			watch: {
+				//监视多级结构中所有属性的变化
+				numbers: {
+					deep: true,
+					handler() {
+						console.log('numbers改变了')
+					}
+				}
+			}
+		})
+	</script>
+</html>

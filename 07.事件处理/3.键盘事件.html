@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>时间修饰符</title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+		<style>
+			.height {
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root">
+			<input placeholder="请输入姓名" @keydown.enter="commit()" />
+		</div>
+	</body>
+	<script type="text/javascript">
+
+		const vm = new Vue({
+			el: '#root',
+			methods: {
+				commit() {
+					alert('提交成功！')
+				}
+			}
+		})
+	</script>
+</html>

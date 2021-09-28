@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>4.列表排序</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			搜索：<input v-model="key" />
+			<ul>
+				<li v-for="(person,index) of filterPerson" :key="person.id">{{index}}-{{person}}</li>
+			</ul>
+			<div>
+				<button @click="isSorted=0">不排序</button>
+				<button @click="isSorted=1">升序</button>
+				<button @click="isSorted=2">降序</button>
+			</div>
+		</div>
+
+		</div>
+		<script type="text/javascript">
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					key: '',
+					isSorted: 0,
+					objArr: [{
+							id: '001',
+							name: 'Robert',
+							age: 19
+						}, {
+							id: '002',
+							name: 'Rose',
+							age: 18
+						},
+						{
+							id: '003',
+							name: 'Jack',
+							age: 20
+						}
+					]
+				},
+				computed: {
+					filterPerson() {
+						const filterArr = this.objArr.filter((obj) => {
+							return obj.name.indexOf(this.key) !== -1
+						})
+						//是否排序
+						if (this.isSorted) {
+							filterArr.sort((obj1, obj2) => {
+								return this.isSorted === 1 ? obj1.age - obj2.age : obj2.age - obj1.age
+							})
+						}
+						return filterArr
+					}
+				}
+				// watch: {
+				// 	key: {
+				// 		immediate: true,
+				// 		handler(val) {
+				// 			this.filterPerson = this.objArr.filter((obj) => {
+				// 				return obj.name.indexOf(val) !== -1
+				// 			})
+				// 			//是否排序
+				// 			if (this.isSorted) {
+				// 				this.filterPerson = this.objArr.sort((obj1, obj2) => {
+				// 					return this.isSorted === 1 ? obj1.age - obj2.age : obj2.age - obj2.age
+				// 				})
+				// 			}
+				// 		}
+				// 	}
+				// }
+			})
+		</script>
+	</body>
+</html>

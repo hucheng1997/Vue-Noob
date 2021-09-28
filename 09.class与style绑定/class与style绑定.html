@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>class与style绑定</title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+		<style>
+			.classA {
+				color: red;
+			}
+			
+			.classC {
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>1. class绑定：:class='xxx'</h2>
+			<p :class="a">表达式是字符串：'classB'</p>
+			<p :class="classObj">表达式是对象:{classA:isA,classB:isB}</p>
+			<p :class="classArr">表达式是数组:['classA','classC']</p>
+			<h2>2. style绑定：:style='xxx'</h2>
+			<p :style="styleObj">:style={color: activeColor, fontSize: fontSize + 'px'}</p>
+			<p :style="styleArr">:style={color}</p>
+		</div>
+		<script type="text/javascript">
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					a: 'classA',
+					c: 'classC',
+					classObj: {
+						classA: false,
+						classB: true
+					},
+					classArr: ['classA','classC'],
+					styleObj: {
+						backgroundColor: 'aqua',
+						color: 'red'
+					},
+					styleArr: [{
+						fontSize: '30px',
+						color: 'blue'
+					}]
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3.列表过滤</title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input v-model="key" />
+			<ul>
+				<li v-for="(val,index) of filterPerson" :key="index">{{index}}-{{val}}</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					key: '',
+					objArr: [{
+							name: 'Robert',
+							age: 18
+						}, {
+							name: 'Rose',
+							age: 19
+						},
+						{
+							name: 'Jack',
+							age: 20
+						}
+					]
+				},
+				watch: {
+					key: {
+						immediate:true,
+						handler(val) {
+							this.filterPerson = this.objArr.filter((obj) => {
+								return obj.name.indexOf(val) !== -1
+							})
+						}
+					}
+				}
+				// computed: {
+				// 	filterPerson(){
+				// 		return this.objArr.filter((obj)=>{
+				// 			return obj.name.indexOf(this.key) !== -1
+				// 		})
+				// 	}
+				// }
+			})
+		</script>
+	</body>
+</html>

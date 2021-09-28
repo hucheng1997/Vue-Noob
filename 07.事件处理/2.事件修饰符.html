@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>时间修饰符</title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+		<style>
+			.height {
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root">
+			<!-- 1、prevent：阻止默认事件（常用）
+			     2、stop：阻止事件冒泡（常用）
+			     3、once：事件只触发一次（常用）
+			     4、capture：使用事件的捕获模式
+			     5、self：只有event.target是当前操作的元素才触发元素 -->
+
+			<!-- 阻止默认事件（常用）-->
+			<a href="http://www.baidu.com" target="_blank" @click.prevent="show">点击跳转百度</a>
+			<!-- 阻止事件的冒泡（常用）事件修饰符可以连写 -->
+			<div class="height" style="background-color: yellowgreen;" @click="show">
+				<button @click.stop.prevent="show2">点我提示信息</button>
+			</div>
+			<!-- 事件只触发一次（常用） -->
+			<button @click.once="log">事件只触发一次</button>
+			<!--优先执行捕获事件-->
+			<div class="height" style="background-color: pink;" @click.capture="show">
+				<button @click="show2">点我提示信息</button>
+			</div>
+			<div class="height" style="background-color: aquamarine;" @click.self="log">
+				<button @click="log">点我提示信息</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+
+		const vm = new Vue({
+			el: '#root',
+			methods: {
+				show() {
+					alert('同学你好！')
+				},
+				show2() {
+					alert('同学再见！')
+				},
+				log() {
+					console.log(event.target)
+				}
+			}
+		})
+	</script>
+</html>

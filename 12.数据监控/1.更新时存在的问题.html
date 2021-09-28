@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>1.更新时存在的问题</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>人员信息</h2>
+			<button @click="update">点击更新Robert人员信息</button>
+			<ul>
+				<li v-for="(p,index) of perArr" :key="p.id">
+					{{p}}
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip = false
+
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					perArr: [{
+							id: '001',
+							name: 'Robert',
+							age: 19
+						}, {
+							id: '002',
+							name: 'Rose',
+							age: 18
+						},
+						{
+							id: '003',
+							name: 'Jack',
+							age: 20
+						}
+					]
+				},
+				methods:{
+					update(){
+						//方式一：更换数组元素，有效
+						// this.perArr[0].name ='Robin'
+						// this.perArr[0].age =20
+						//方式二：替换数组数据 OK
+						this.perArr[0] ={id: '001', name: 'Robin', age: 20}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

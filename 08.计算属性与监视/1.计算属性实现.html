@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>1、计算属性实现</title>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			姓：<input type="text" v-model="firstName" /><br />
+			名：<input type="text" v-model="lastName" /><br />
+			姓名：<input type="text" v-model="fullName" /><br />
+			姓名2：{{fullName2}}
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+		const vm = new Vue({
+			el: '#root',
+			data: {
+				firstName: 'Ken',
+				lastName: 'Brown'
+			},
+			computed: {
+				fullName: {
+					get() {
+						console.log("----get()方法调用----")
+						return this.firstName + '-' + this.lastName
+					},
+					set(value) {
+						console.log("----set()方法调用----")
+						const arr = value.split("-")
+						this.firstName = arr[0]
+						this.lastName = arr[1]
+					}
+				},
+				// 简写、相当于只有get方法
+				fullName2(){
+					console.log('get2被调用了')
+					return this.firstName + '-' + this.lastName
+				}
+			}
+		})
+	</script>
+</html>

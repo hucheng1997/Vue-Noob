@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>理解MVVM</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			<div id="root">
+				<h1>学校名称：{{name}}</h1>
+				<h1>学校地址：{{address}}</h1>
+				<h1>测试一下：{{1+1}}</h1>
+				<h1>测试一下：{{$options}}</h1>
+				<h1>测试一下：{{_c}}</h1>
+			</div>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+			const vm = new Vue({
+				el:'#root',
+				data:{
+					name:'Peking',
+					address:'北京',
+				}
+			})
+			console.log(vm)
+		</script>
+	</body>
+</html>
